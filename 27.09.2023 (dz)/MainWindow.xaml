@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         FontSize="18">
     <DockPanel>
-        <WrapPanel Height="50" Background="Aqua" DockPanel.Dock="Top">
+        <WrapPanel Background="Aqua" DockPanel.Dock="Top">
             <Button Height="40" Content="MenuItem1" Margin="5" Padding="5"/>
             <Button Height="40" Content="MenuItem2" Margin="5" Padding="5"/>
             <Button Height="40" Content="MenuItem3" Margin="5" Padding="5"/>
