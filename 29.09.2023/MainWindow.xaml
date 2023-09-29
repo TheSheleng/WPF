@@ -1,0 +1,21 @@
+﻿<Window x:Class="_29._09._2023.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_29._09._2023"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <WrapPanel Background="SkyBlue" DockPanel.Dock="Top">
+            <Button Name="LangButt" Margin="7" Padding="7" Click="ButtonLang_Click">
+            </Button>
+        </WrapPanel>
+
+        <WrapPanel Background="SlateGray" DockPanel.Dock="Top">
+            <Button Name="Butt1" Background="NavajoWhite" BorderThickness="0" Padding="7" Margin="7"></Button>
+            <Button Name="Butt2" Background="NavajoWhite" BorderThickness="0" Padding="7" Margin="7"></Button>
+            <Button Name="Butt3" Background="NavajoWhite" BorderThickness="0" Padding="7" Margin="7"></Button>
+        </WrapPanel>
+    </DockPanel>
+</Window>
