@@ -8,11 +8,12 @@
         Title="MainWindow" Height="450" Width="800"
         WindowStyle="None"
         FontSize="18"
-        Foreground="White">
+        Foreground="White"
+        KeyDown="Grid_KeyDown">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35" />
     </WindowChrome.WindowChrome>
-    
+
     <DockPanel Background="#4E5083">
         <DockPanel Background="#2F3A70" DockPanel.Dock="Top" Height="35">
             <StackPanel DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" Orientation="Horizontal">
@@ -60,13 +61,15 @@
 
                 <DataTemplate x:Key="TabHeaderPlusImage">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="plus.png" Width="30" Height="20"/>
                         <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        <Button Background="#4E5083" Padding="5" Margin="2" BorderThickness="0" Click="OneNewImage">
+                            <Image Source="plus.png" Width="20" Height="20"/>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </TabControl.Resources>
 
-            <TabItem HeaderTemplate="{StaticResource TabHeaderPlusImage}" PreviewMouseDown="TabItem_MouseClick">
+            <TabItem HeaderTemplate="{StaticResource TabHeaderPlusImage}">
                 <Grid Background="#6B6793"/>
             </TabItem>
         </TabControl>
