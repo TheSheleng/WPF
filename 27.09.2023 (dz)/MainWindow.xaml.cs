@@ -24,5 +24,16 @@ namespace _27._09._2023__dz_
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            popupHeader.Text = (sender as Button).Content.ToString();
+            popup.IsOpen = true;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            popup.IsOpen = false;
+        }
     }
 }

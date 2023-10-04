@@ -9,16 +9,38 @@
         FontSize="18">
     <DockPanel>
         <WrapPanel Background="Aqua" DockPanel.Dock="Top">
-            <Button Height="40" Content="MenuItem1" Margin="5" Padding="5"/>
-            <Button Height="40" Content="MenuItem2" Margin="5" Padding="5"/>
-            <Button Height="40" Content="MenuItem3" Margin="5" Padding="5"/>
+            <Button Height="40" Content="MenuItem1" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button Height="40" Content="MenuItem2" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button Height="40" Content="MenuItem3" Margin="5" Padding="5" Click="Button_Click"/>
         </WrapPanel>
 
         <WrapPanel Width="160" Background="Bisque" DockPanel.Dock="Left">
-            <Button Width="150" Height="40" Content="Operation1" Margin="5" Padding="5"/>
-            <Button Width="150"  Height="40" Content="Operation2" Margin="5" Padding="5"/>
-            <Button Width="150" Height="40" Content="Operation3" Margin="5" Padding="5"/>
+            <Button Width="150" Height="40" Content="Operation1" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button Width="150"  Height="40" Content="Operation2" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button Width="150" Height="40" Content="Operation3" Margin="5" Padding="5" Click="Button_Click"/>
         </WrapPanel>
+
+        <Popup Name="popup"  StaysOpen="True" Placement="Mouse" VerticalOffset="30" PopupAnimation="Slide" AllowsTransparency="True">
+            <Border Background="Brown" BorderBrush="ForestGreen" BorderThickness="3" CornerRadius="5">
+                <Grid Width="300" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0" >
+                        <TextBlock Name="popupHeader" Width="270"/>
+                        <Button Click="Button_Click_1" DockPanel.Dock="Right" Width="25" Margin="5 0 0 0" BorderThickness="0" Background="Brown">
+                            <Image Source="cross.png"/>
+                        </Button>
+                    </DockPanel>
+
+                    <TextBlock Grid.Row="1" Margin="0 20 0 0">
+                            Test Text: Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </Popup>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -42,10 +64,34 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button Content="1" Margin="5" Padding="5" Grid.Column="0" Grid.Row="0"/>
-                <Button Content="2" Margin="5" Padding="5" Grid.Column="1" Grid.Row="0"/>
-                <Button Content="3" Margin="5" Padding="5" Grid.Column="0" Grid.Row="1"/>
-                <Button Content="4" Margin="5" Padding="5" Grid.Column="1" Grid.Row="1"/>
+                <Button Content="1" Margin="5" Padding="5" Grid.Column="0" Grid.Row="0">
+                    <Button.ToolTip>
+                        <ToolTip Background="Green" BorderThickness="0" Placement="Center" VerticalOffset="-160">
+                            <Image Source="image_1.jpg" Height="200"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Content="2" Margin="5" Padding="5" Grid.Column="1" Grid.Row="0">
+                    <Button.ToolTip>
+                        <ToolTip Background="Yellow" BorderThickness="0" Placement="Center" VerticalOffset="-160">
+                            <Image Source="image_2.jpg" Height="200"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Content="3" Margin="5" Padding="5" Grid.Column="0" Grid.Row="1">
+                    <Button.ToolTip>
+                        <ToolTip Background="Red" BorderThickness="0" Placement="Center" VerticalOffset="-160">
+                            <Image Source="image_3.jpg" Height="200"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Content="4" Margin="5" Padding="5" Grid.Column="1" Grid.Row="1">
+                    <Button.ToolTip>
+                        <ToolTip Background="Blue" BorderThickness="0" Placement="Center" VerticalOffset="-160">
+                            <Image Source="image_4.jpg" Height="200"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
             </Grid>
         </Grid>
     </DockPanel>
