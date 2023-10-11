@@ -56,10 +56,10 @@ namespace _04._10._2023
             Random rnd = new Random((int)DateTime.Now.Ticks);
             for (int i = 0; i < iter; i++)
             {
-                int p1x = rnd.Next(0, MapSize - 1);
-                int p1y = rnd.Next(0, MapSize - 1);
-                int p2x = rnd.Next(0, MapSize - 1);
-                int p2y = rnd.Next(0, MapSize - 1);
+                int p1x = rnd.Next(MapSize);
+                int p1y = rnd.Next(MapSize);
+                int p2x = rnd.Next(MapSize);
+                int p2y = rnd.Next(MapSize);
 
                 ImageSource tempImage = cells[p1x, p1y].Source;
                 cells[p1x, p1y].Source = cells[p2x, p2y].Source;
