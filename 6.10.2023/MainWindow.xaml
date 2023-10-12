@@ -1,0 +1,35 @@
+﻿<Window x:Class="_6._10._2023.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_6._10._2023"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="150" Width="800"
+        xmlns:CreditProperty="clr-namespace:CreditProperty"
+        FontSize="24">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Margin="5">Зарплата</Label>
+            <TextBox Name="Payment" Grid.Column="1" Margin="5" Padding="5" VerticalAlignment="Center"></TextBox>
+
+            <CreditProperty:CreditProperty x:Name="CreditProperty" Data="{Binding ElementName=Payment, Path=Text}"/>
+        </Grid>
+        <Grid Height="50" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="260"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Margin="5" >Кредит</Label>
+            <Slider Name="Slider" Grid.Column="1" VerticalAlignment="Center" Maximum="{Binding ElementName=CreditProperty, Path=Data}"></Slider>
+            <Label Grid.Column="2" Margin="5" Content="{Binding ElementName=Slider, Path=Value}" Grid.ColumnSpan="2"></Label>
+        </Grid>
+    </DockPanel>
+</Window>
