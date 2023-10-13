@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _13._10._2023
+namespace _13._10._2023__dz_
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,17 +23,6 @@ namespace _13._10._2023
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private bool RuLangFlag = false;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ResourceDictionary newDictionary = new ResourceDictionary();
-
-            RuLangFlag = !RuLangFlag;
-            newDictionary.Source = new Uri(RuLangFlag ? "ru_ru.xaml" : "en_en.xaml", UriKind.Relative);
-
-            Application.Current.Resources.MergedDictionaries[0] = newDictionary;
         }
     }
 }
