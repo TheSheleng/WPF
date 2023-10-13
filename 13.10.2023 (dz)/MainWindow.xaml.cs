@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,21 @@ namespace _13._10._2023__dz_
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+
+        private bool RuLangFlag = false;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RuLangFlag = !RuLangFlag;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(RuLangFlag ? "ru" : "en");
+            name.Content = lang.Name;
+            surname.Content = lang.Surname;
+            phone.Content = lang.Phone;
+            ok.Content = lang.OK;
+            cancel.Content = lang.Cancel;
+            change_language.Content = lang.ChangeLanguage;
         }
     }
 }
