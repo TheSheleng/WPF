@@ -9,7 +9,7 @@
         WindowStyle="None"
         FontSize="18"
         Foreground="White"
-        KeyDown="Grid_KeyDown">
+        KeyDown="Grid_KeyDown" ResizeMode="NoResize" SizeToContent="Height">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35" />
     </WindowChrome.WindowChrome>
