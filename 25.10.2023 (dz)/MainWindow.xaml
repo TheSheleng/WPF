@@ -10,7 +10,8 @@
 
     <Window.Resources>
         <ControlTemplate x:Key="RoundedTextBoxTemplate" TargetType="TextBox">
-            <Border BorderBrush="{TemplateBinding BorderBrush}"
+            <Border Name="TextBoxBorder"
+                    BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="10">
                 <Border.Background>
@@ -23,15 +24,44 @@
                 </Border.Background>
                 <ScrollViewer x:Name="PART_ContentHost"/>
             </Border>
+
+            <ControlTemplate.Triggers >
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="TextBoxBorder" Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="LightGray" Offset="0"/>
+                                <GradientStop Color="White" Offset="0.2"/>
+                                <GradientStop Color="White" Offset="0.8"/>
+                                <GradientStop Color="LightGray" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
 
         <ControlTemplate x:Key="RoundedButtonTemplate" TargetType="Button">
-            <Border Background="{TemplateBinding Background}"
+            <Border x:Name="BorderButton"
+                    Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="10">
                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
+
+            <ControlTemplate.Triggers >
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BorderButton" Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="{TemplateBinding Background}" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
 
