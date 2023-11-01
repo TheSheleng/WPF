@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20._10._2023_dz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600"
+        Title="MainWindow" Height="500" Width="350"
         FontSize="18"
         Background="#f8f6e9"
         KeyDown="Window_KeyDown">
