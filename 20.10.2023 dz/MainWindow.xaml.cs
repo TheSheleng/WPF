@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Emit;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace _20._10._2023_dz
 {
@@ -52,10 +54,13 @@ namespace _20._10._2023_dz
             if (e.Key != Key.Left && e.Key != Key.Right && e.Key != Key.Up && e.Key != Key.Down) return;
 
             int[,] Nums = new int[LengthOfRowsColumns, LengthOfRowsColumns];
+            int[,] CopyNums = new int[LengthOfRowsColumns, LengthOfRowsColumns];
             foreach (System.Windows.Controls.Label l in Labeles.Children)
             {
                 Nums[Grid.GetColumn(l), Grid.GetRow(l)] = int.Parse(l.Content.ToString());
+                CopyNums[Grid.GetColumn(l), Grid.GetRow(l)] = int.Parse(l.Content.ToString());
             }
+
 
             switch (e.Key)
             {
@@ -77,7 +82,7 @@ namespace _20._10._2023_dz
                     {
                         bool IsJoined = false;
                         for (int z = y - 1; z >= 0; z--)
-                            if (Nums[z, i] == Nums[y, i]) 
+                            if (Nums[z, i] == Nums[y, i])
                             {
                                 Nums[z, i] = Nums[z, i] + Nums[y, i];
                                 Nums[y, i] = 0;
@@ -85,6 +90,7 @@ namespace _20._10._2023_dz
                                 IsJoined = true;
                                 break;
                             }
+                            else if (Nums[z, i] != 0) break;
 
                         if (!IsJoined)
                             for (int z = 0; z < y; z++)
@@ -130,8 +136,7 @@ namespace _20._10._2023_dz
                     Point point = new Point(x, y);
                     if (!CloseLocate.Contains(point)) FreeLocate.Add(point);
                 }
-
-            if (FreeLocate.Count != 0) RandomLabelSpawn(FreeLocate);
+            if (FreeLocate.Count != 0 && !CopyNums.Cast<int>().SequenceEqual(Nums.Cast<int>())) RandomLabelSpawn(FreeLocate);
 
             if (IsWin())
             {
@@ -153,7 +158,7 @@ namespace _20._10._2023_dz
 
         private void StartGame()
         {
-            HighScore.Text = Score.Text;
+            if (int.Parse(HighScore.Text) < int.Parse(Score.Text)) HighScore.Text = Score.Text;
             Score.Text = "0";
 
             Labeles.Children.Clear();
@@ -171,6 +176,11 @@ namespace _20._10._2023_dz
         private void AddScore(int Value)
         {
             Score.Text = (int.Parse(Score.Text) + Value).ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartGame();
         }
     }
 

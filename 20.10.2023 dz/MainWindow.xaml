@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_20._10._2023_dz"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600"
-        FontSize="24"
+        FontSize="18"
         Background="#f8f6e9"
         KeyDown="Window_KeyDown">
 
@@ -14,8 +14,8 @@
         <Style TargetType="Label">
             <Setter Property="Background" Value="#ece0ca"/>
             <Setter Property="Foreground" Value="#787065"/>
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="Height" Value="75"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Template">
@@ -47,15 +47,16 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="235"/>
-            <ColumnDefinition Width="235"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="440"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -100,5 +101,16 @@
                 </Grid.RowDefinitions>
             </Grid>
         </Border>
+
+
+        <Button Content="Restart" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Foreground="#787065" Margin="5" Click="Button_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#ece0ca" CornerRadius="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>
