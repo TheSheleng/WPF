@@ -74,13 +74,16 @@ namespace _04._10._2023
 
             Image image = e.Source as Image;
             DataObject data = new DataObject(typeof(ImageSource), image.Source);
+
             DragDrop.DoDragDrop(image, data, DragDropEffects.All);
         }
 
         private void image_Drop(object sender, DragEventArgs e)
         {
             Image image = (sender as Image);
+
             ImageSource droped = e.Data.GetData(typeof(ImageSource)) as ImageSource;
+
             if (droped != null) 
             {
                 dragingImage.Source = image.Source;

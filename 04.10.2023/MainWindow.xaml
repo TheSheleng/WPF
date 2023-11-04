@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="397" Width="375"
         ResizeMode="NoResize">
+
+    
+    
     <Grid Name="grid" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
