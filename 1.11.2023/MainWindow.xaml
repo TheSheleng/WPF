@@ -30,7 +30,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -54,12 +53,10 @@
             <Slider Value="{Binding Red}" Grid.Row="1" Grid.Column="2" Maximum="255"/>
             <Slider Value="{Binding Green}" Grid.Row="2" Grid.Column="2" Maximum="255"/>
             <Slider Value="{Binding Blue}" Grid.Row="3" Grid.Column="2" Maximum="255"/>
-
-            <Border Background="{Binding CurrentColor}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="4" Margin="10"/>
         </Grid>
 
-        <Button Content="Add" Width="100" Grid.Row="1"/>
+        <Button Command="{Binding AddCommand}" Content="Add" Width="100" Grid.Row="1"/>
 
-        <GroupBox Grid.Row="2" Margin="10"/>
+        <ListView ItemsSource="{Binding ColorItems}" Grid.Row="2" Margin="10"/>
     </Grid>
 </Window>

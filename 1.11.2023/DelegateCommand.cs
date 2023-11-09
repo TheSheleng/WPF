@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace _1._11._2023
 {
-    internal class DelegateCommsnd : ICommand
+    internal class DelegateCommand : ICommand
     {
-        public DelegateCommsnd(Action<object> execute, Predicate<object> canExecute)
+        public DelegateCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");

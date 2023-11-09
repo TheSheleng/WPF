@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml.Linq;
 
@@ -12,6 +15,13 @@ namespace _1._11._2023
 {
     internal class MainViewModel : DependencyObject
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private static readonly DependencyProperty AlphaProrety
             = DependencyProperty.Register(
                 "Alpha", 
@@ -40,13 +50,6 @@ namespace _1._11._2023
                 typeof(MainViewModel),
                 new PropertyMetadata(0, OnPropertyChanged));
 
-        private static readonly DependencyProperty CurrentColorProrety
-            = DependencyProperty.Register(
-                "CurrentColor", 
-                typeof(Brush), 
-                typeof(MainViewModel),
-                new PropertyMetadata(new SolidColorBrush(), OnPropertyChanged));
-
         public int Alpha
         {
             get { return (int)GetValue(AlphaProrety); }
@@ -71,19 +74,42 @@ namespace _1._11._2023
             set { SetValue(BlueProrety, value); }
         }
 
-        public Brush CurrentColor
-        {
-            get { return (Brush)GetValue(CurrentColorProrety); }
-            set { SetValue(CurrentColorProrety, value); }
-        }
-
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            d.SetValue(CurrentColorProrety, new SolidColorBrush(Color.FromArgb(
-                (byte)d.GetValue(AlphaProrety),
-                (byte)d.GetValue(AlphaProrety),
-                (byte)d.GetValue(AlphaProrety),
-                (byte)d.GetValue(AlphaProrety))));
+            
         }
+
+        public ObservableCollection<Color> ColorItems { get; set; } 
+            = new ObservableCollection<Color>();
+
+        DelegateCommand addCommand;
+
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (addCommand == null)
+                {
+                    addCommand = new DelegateCommand(AddColor, CanAddColor);
+                }
+
+                return addCommand;
+            }
+        }
+
+        private void AddColor(object obj)
+        {
+            ColorItems.Add(Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue));
+        }
+
+        private bool CanAddColor(object obj)
+        {
+            return true;
+        }
+    }
+
+    internal class Model
+    {
+        
     }
 }
