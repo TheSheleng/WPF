@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_3._11._2023.Views"
         mc:Ignorable="d"
-        Title="EditPersonWindow" Height="300" Width="600"
+        Title="EditPersonWindow" Height="310" Width="600"
         FontSize="20"
         WindowStyle="None">
     <WindowChrome.WindowChrome>
@@ -58,14 +58,8 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Padding" Value="10"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#7351ee" Offset="0.0"/>
-                        <GradientStop Color="#a784fb" Offset="1.1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="#28233c"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -121,9 +115,9 @@
             <TextBlock Text="Adress"  Grid.Row="1" Style="{StaticResource DefTextBlock}"/>
             <TextBlock Text="Number"  Grid.Row="2" Style="{StaticResource DefTextBlock}"/>
 
-            <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource DefTextBox}"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource DefTextBox}"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource DefTextBox}"/>
+            <TextBox Text="{Binding BIO}" Grid.Column="1" Grid.Row="0" Style="{StaticResource DefTextBox}"/>
+            <TextBox Text="{Binding Addres}" Grid.Column="1" Grid.Row="1" Style="{StaticResource DefTextBox}"/>
+            <TextBox Text="{Binding Number}" Grid.Column="1" Grid.Row="2" Style="{StaticResource DefTextBox}"/>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -132,8 +126,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Cancel" Style="{StaticResource DefButton}" Grid.Column="0" Background="#e79995"/>
-            <Button Content="Save" Style="{StaticResource DefButton}" Grid.Column="1" Background="#94ccfd"/>
+            <Button Content="Cancel" Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Style="{StaticResource DefButton}" Grid.Column="0" Background="#e79995"/>
+            <Button Content="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Style="{StaticResource DefButton}" Grid.Column="1" Background="#94ccfd"/>
         </Grid>
     </Grid>
 </Window>

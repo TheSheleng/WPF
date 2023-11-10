@@ -24,10 +24,5 @@ namespace _3._11._2023
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("");
-        }
     }
 }

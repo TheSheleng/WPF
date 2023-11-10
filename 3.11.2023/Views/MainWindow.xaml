@@ -75,8 +75,7 @@
             </Button>
         </WrapPanel>
 
-        <ListView ItemsSource="{Binding Person}" Grid.Row="1" Margin="15" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            
+        <ListView Name="List"  ItemsSource="{Binding Persons}" Foreground="White" Grid.Row="1" Margin="15" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.Style>
                 <Style TargetType="ListView">
                     <Setter Property="Template">
@@ -104,10 +103,10 @@
             </Grid.ColumnDefinitions>
             
             <Button Content="Add" Command="{Binding AddCommand}" Style="{StaticResource DefButton}" Grid.Column="0" Background="#a584f9"/>
-            <Button Content="Edit" Style="{StaticResource DefButton}" Grid.Column="1" Background="#e79995"/>
-            <Button Content="Dell" Style="{StaticResource DefButton}" Grid.Column="2" Background="#e7cd4d"/>
-            <Button Content="Save" Style="{StaticResource DefButton}" Grid.Column="3" Background="#94ccfd"/>
-            <Button Content="Open" Style="{StaticResource DefButton}" Grid.Column="4" Background="#92db9b"/>
+            <Button Content="Edit" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=List, Path=SelectedItem}" Style="{StaticResource DefButton}" Grid.Column="1" Background="#e79995"/>
+            <Button Content="Dell" Command="{Binding DellCommand}" CommandParameter="{Binding ElementName=List, Path=SelectedItem}" Style="{StaticResource DefButton}" Grid.Column="2" Background="#e7cd4d"/>
+            <Button Content="Save" Command="{Binding SaveFileCommand}" Style="{StaticResource DefButton}" Grid.Column="3" Background="#94ccfd"/>
+            <Button Content="Open" Command="{Binding OpenFileCommand}" Style="{StaticResource DefButton}" Grid.Column="4" Background="#92db9b"/>
         </Grid>
     </Grid>
 </Window>
