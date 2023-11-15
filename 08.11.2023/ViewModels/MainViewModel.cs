@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Text.Json;
 
 namespace _08._11._2023.ViewModels
 {
@@ -18,6 +19,9 @@ namespace _08._11._2023.ViewModels
         private static readonly DependencyProperty NameProperty;
         private static readonly DependencyProperty SurnameProperty;
         private static readonly DependencyProperty IsEnglishProperty;
+        private static readonly DependencyProperty IsJavaProperty;
+        private static readonly DependencyProperty IsCPlusPlusProperty;
+        private static readonly DependencyProperty IsCSharpProperty;
         private static readonly DependencyProperty SelectedSummaryItemProperty;
 
         static MainViewModel()
@@ -31,17 +35,26 @@ namespace _08._11._2023.ViewModels
             IsEnglishProperty = DependencyProperty.Register(
                 "English", typeof(bool), typeof(MainViewModel));
 
+            IsJavaProperty = DependencyProperty.Register(
+                "Java", typeof(bool), typeof(MainViewModel));
+
+            IsCPlusPlusProperty = DependencyProperty.Register(
+                "CPlusPlus", typeof(bool), typeof(MainViewModel));
+
+            IsCSharpProperty = DependencyProperty.Register(
+                "CSharp", typeof(bool), typeof(MainViewModel));
+
             SelectedSummaryItemProperty = DependencyProperty.Register(
                 "SelectedSummaryItem", typeof(SummaryModel), typeof(MainViewModel));
+
         }
 
         public MainViewModel()
         {
             Summaries = new ObservableCollection<SummaryModel>();
 
-            Summaries.Add(new SummaryModel("Name 1", "Surname 1", true));
-            Summaries.Add(new SummaryModel("Name 2", "Surname 2", false));
-            Summaries.Add(new SummaryModel("Name 3", "Surname 3", true));
+            string json = File.ReadAllText("Summaries.json");
+            Summaries = JsonSerializer.Deserialize<ObservableCollection<SummaryModel>>(json);
         }
 
         public string Name
@@ -59,7 +72,25 @@ namespace _08._11._2023.ViewModels
         public bool IsEnglish
         {
             get { return (bool)GetValue(IsEnglishProperty); }
-            set { SetValue(IsEnglishProperty, value);}
+            set { SetValue(IsEnglishProperty, value); }
+        }
+
+        public bool IsJava
+        {
+            get { return (bool)GetValue(IsEnglishProperty); }
+            set { SetValue(IsEnglishProperty, value); }
+        }
+
+        public bool IsCPlusPlus
+        {
+            get { return (bool)GetValue(IsEnglishProperty); }
+            set { SetValue(IsEnglishProperty, value); }
+        }
+
+        public bool IsCSharp
+        {
+            get { return (bool)GetValue(IsEnglishProperty); }
+            set { SetValue(IsEnglishProperty, value); }
         }
 
         public SummaryModel SelectedSummaryItem
@@ -84,7 +115,10 @@ namespace _08._11._2023.ViewModels
 
         private void SaveSummary(object obj)
         {
-            Summaries.Add(new SummaryModel(Name, Surname, IsEnglish));
+            Summaries.Add(new SummaryModel(Name, Surname, IsEnglish, IsJava, IsCPlusPlus, IsCSharp));
+
+            string json = JsonSerializer.Serialize(Summaries);
+            File.WriteAllText("Summaries.json", json);
         }
 
         private bool CanSaveSummary(object obj)

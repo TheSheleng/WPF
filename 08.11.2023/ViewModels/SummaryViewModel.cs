@@ -31,7 +31,8 @@ namespace _08._11._2023.ViewModels
 
         private string GeneratedInfo(SummaryModel summaryModel)
         {
-            return $"{summaryModel.Name} {summaryModel.Surname} {summaryModel.IsEngish}";
+            return $"{summaryModel.Name} {summaryModel.Surname}\nEngish: {summaryModel.IsEngish}" +
+                $"\nJava: {summaryModel.Java}\nC++: {summaryModel.CPlusPlus}\nC#: {summaryModel.CSharp}";
         }
     }
 }

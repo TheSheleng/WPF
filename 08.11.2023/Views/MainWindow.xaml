@@ -16,6 +16,9 @@
 
             <WrapPanel>
                 <CheckBox Content="English" IsChecked="{Binding IsEnglish}"/>
+                <CheckBox Content="Java" IsChecked="{Binding IsJava}"/>
+                <CheckBox Content="C++" IsChecked="{Binding IsCPlusPlus}"/>
+                <CheckBox Content="C#" IsChecked="{Binding IsCSharp}"/>
             </WrapPanel>
 
             <Button Content="Save" Command="{Binding SaveCommand}"/>
